@@ -9,14 +9,7 @@ public class LoadData extends JFrame {
     private final JTable table;
     private final DefaultTableModel tableModel = new DefaultTableModel();
 
-    public static void EXEC(String querytoexec) {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new LoadData(querytoexec).setVisible(true);
-            }
-        });
-    }
+    
 
     public LoadData(String querytoexec) throws HeadlessException {
         setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
@@ -36,6 +29,15 @@ public class LoadData extends JFrame {
         setSize(640, 480);
     }
 
+    public static void EXEC(String querytoexec) {
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new LoadData(querytoexec).setVisible(true);
+            }
+        });
+    }
+    
     private void SQLTable(String querytoexec) {
 
         Statement stmt;
