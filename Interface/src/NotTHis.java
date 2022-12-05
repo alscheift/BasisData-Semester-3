@@ -33,7 +33,7 @@ public class NotTHis {
             ResultSet rs = stat.getResultSet();
             int count = 1;
             for(;rs.next();count++){
-                String KdMapel = rs.getString("KdMapel");
+                String KdMapel = rs.getString("IdMapel");
                 String NamaMapel = rs.getString("NamaMapel");
                 System.out.printf("%s %s\n",KdMapel,NamaMapel);
 

@@ -31,55 +31,47 @@ import java.awt.event.ActionEvent;
 
 import java.util.Vector;
 
-public class GUI extends JFrame {
+public class JPanel2_Exec extends JFrame {
 
-    public static void main(String[] args) {
+    public static void EXEC(String querytoexec){
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new GUI().setVisible(true);
+                new JPanel2_Exec(querytoexec).setVisible(true);
             }
         });
     }
 
-    private final JButton button;
     private final JTable table;
     private final DefaultTableModel tableModel = new DefaultTableModel();
 
-    public GUI() throws HeadlessException {
+    public JPanel2_Exec(String querytoexec) throws HeadlessException {
 
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 
         table = new JTable(tableModel);
         add(new JScrollPane(table), BorderLayout.CENTER);
 
-        button = new JButton("Load Data");
-        button.addActionListener(new ActionListener() {
+        new SwingWorker<Void, Void>() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                new SwingWorker<Void, Void>() {
-                    @Override
-                    protected Void doInBackground() throws Exception {
-                        loadData();
-                        return null;
-                    }
-                }.execute();
+            protected Void doInBackground() throws Exception {
+                loadData(querytoexec);
+                return null;
             }
-        });
-        add(button, BorderLayout.PAGE_START);
+        }.execute();
 
         setSize(640, 480);
     }
 
-    private void loadData() {
+    private void loadData(String querytoexec) {
         //LOG.info("START loadData method");
 
-        button.setEnabled(false);
+       // button.setEnabled(false);
         String url = "jdbc:sqlserver://ASBJORNSEN\\SQLEXPRESS;databaseName=smp;integratedSecurity=true;encrypt=true;trustServerCertificate=true";  
         try (Connection conn = DriverManager.getConnection(url);
                 Statement stmt = conn.createStatement()) {
 
-            ResultSet rs = stmt.executeQuery("SELECT * FROM SISWA;");
+            ResultSet rs = stmt.executeQuery(querytoexec);
             ResultSetMetaData metaData = rs.getMetaData();
 
             // Names of columns
@@ -101,11 +93,7 @@ public class GUI extends JFrame {
 
             tableModel.setDataVector(data, columnNames);
         } catch (Exception e) {
-            //LOG.log(Level.SEVERE, "Exception in Load Data", e);
         }
-        button.setEnabled(true);
-
-        //LOG.info("END loadData method");
     }
 
 }
