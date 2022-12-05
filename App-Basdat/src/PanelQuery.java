@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.util.*;
+
 import javax.swing.*;
 
 
@@ -41,7 +43,20 @@ public class PanelQuery extends JPanel{
         
         // ButtonPress
         SingleExec.addActionListener(e -> executeSingleQuery());
+        MultiLineExec.addActionListener(e -> executeMultiQuery());
         BackButton.addActionListener(e -> goBackMainPanel());
+    }
+
+    private Object executeMultiQuery() {
+        String query = this.MultiLineQuery.getText();
+        String[] querysplit = query.split(";");
+
+        Vector<String> queryvec = new Vector<String>();
+        queryvec.addAll(Arrays.asList(querysplit));
+        for(String query_at_i :queryvec){
+            LoadData.EXEC(query_at_i);
+        }
+        return null;
     }
 
     private Object executeSingleQuery() {
