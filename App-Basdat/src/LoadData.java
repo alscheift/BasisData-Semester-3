@@ -47,30 +47,33 @@ public class LoadData extends JFrame {
             ResultSet rs = stmt.executeQuery(querytoexec);
             System.out.println(querytoexec);
             ResultSetMetaData metaData = rs.getMetaData();
-            
-            // Nama kolomnya
-            Vector<String> columnNames = new Vector<String>();
-            int columnCount = metaData.getColumnCount();
-            for (int i = 1; i <= columnCount; i++) {
-                columnNames.add(metaData.getColumnName(i));
-            }
-
-            // Masukkan data
-            Vector<Vector<Object>> data = new Vector<Vector<Object>>();
-            while (rs.next()) {
-                Vector<Object> vector = new Vector<Object>();
+            if (!rs.isBeforeFirst()) {
+                System.out.println("No data");
+            } else {
+                // Nama kolomnya
+                Vector<String> columnNames = new Vector<String>();
+                int columnCount = metaData.getColumnCount();
                 for (int i = 1; i <= columnCount; i++) {
-                    vector.add(rs.getObject(i));
+                    columnNames.add(metaData.getColumnName(i));
                 }
-                data.add(vector);
+
+                // Masukkan data
+                Vector<Vector<Object>> data = new Vector<Vector<Object>>();
+                while (rs.next()) {
+                    Vector<Object> vector = new Vector<Object>();
+                    for (int i = 1; i <= columnCount; i++) {
+                        vector.add(rs.getObject(i));
+                    }
+                    data.add(vector);
+                }
+
+                tableModel.setDataVector(data, columnNames);
             }
-
-            tableModel.setDataVector(data, columnNames); 
-
-            // Menutup koneksi statement dan resultset, untuk connection jangan di close kalau tidak reconnect setiap query.
+            // Menutup koneksi statement dan resultset, untuk connection jangan di close
+            // kalau tidak reconnect setiap query.
             rs.close();
             stmt.close();
-            //App.conn.close();
+            // App.conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
