@@ -9,8 +9,6 @@ public class LoadData extends JFrame {
     private final JTable table;
     private final DefaultTableModel tableModel = new DefaultTableModel();
 
-    
-
     public LoadData(String querytoexec) throws HeadlessException {
         setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 
@@ -33,11 +31,11 @@ public class LoadData extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new LoadData(querytoexec).setVisible(true);
+                new LoadData(querytoexec);
             }
         });
     }
-    
+
     private void SQLTable(String querytoexec) {
 
         Statement stmt;
@@ -46,13 +44,16 @@ public class LoadData extends JFrame {
             // setiap saat
             stmt = App.conn.createStatement();
 
-            ResultSet rs = stmt.executeQuery(querytoexec);
+            Boolean isReturning = stmt.execute(querytoexec);
+            ResultSet rs = stmt.getResultSet();
             System.out.println(querytoexec);
             ResultSetMetaData metaData = rs.getMetaData();
-            if (!rs.isBeforeFirst()) {
+            if (!isReturning) {
                 System.out.println("No data");
             } else {
                 // Nama kolomnya
+
+                setVisible(true);
                 Vector<String> columnNames = new Vector<String>();
                 int columnCount = metaData.getColumnCount();
                 for (int i = 1; i <= columnCount; i++) {
