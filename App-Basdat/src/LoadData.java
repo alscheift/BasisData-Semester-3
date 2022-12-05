@@ -47,7 +47,7 @@ public class LoadData extends JFrame {
             ResultSet rs = stmt.executeQuery(querytoexec);
             System.out.println(querytoexec);
             ResultSetMetaData metaData = rs.getMetaData();
-
+            
             // Nama kolomnya
             Vector<String> columnNames = new Vector<String>();
             int columnCount = metaData.getColumnCount();

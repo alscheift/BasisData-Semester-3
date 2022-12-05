@@ -5,6 +5,7 @@ import javax.swing.*;
 public class App  {
     public static JFrame mainframe;
     public static JPanel mainPanel;
+
     public static JLabel statusLabel;
     public static Connection conn;  
     public static String dbUrl = "jdbc:sqlserver://ASBJORNSEN\\SQLEXPRESS;databaseName=smp;integratedSecurity=true;encrypt=true;trustServerCertificate=true";   
@@ -52,9 +53,9 @@ public class App  {
         
         if(connectDb()){
             setStatus("SQL Server Connection Success...");
-            LoadData.EXEC("select * from mapel;");
             LoadData.EXEC("select * from siswa;");
             LoadData.EXEC("select * from guru;");
+            LoadData.EXEC("select * from mapel;");
             
         }else{
             setStatus("SQL Server Connection Failed...");
