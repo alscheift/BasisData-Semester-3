@@ -39,13 +39,25 @@ public class PanelQuery extends JPanel{
         MultiLineExec.setBounds (530, 105, 100, 25);
         BackButton.setBounds (10, 440, 100, 25);
         
+        // ButtonPress
+        SingleExec.addActionListener(e -> executeSingleQuery());
+        BackButton.addActionListener(e -> goBackMainPanel());
     }
 
-    public static void main (String[] args) {
-        JFrame frame = new JFrame ("MyPanel");
-        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().add (new PanelQuery());
-        frame.pack();
-        frame.setVisible (true);
+    private Object executeSingleQuery() {
+        String query = this.SingleQuery.getText();
+        LoadData.EXEC(query);
+        return null;
     }
+
+    private Object goBackMainPanel() {
+        App.mainframe.getContentPane().removeAll();
+        App.mainframe.repaint();
+        App.mainframe.add(App.mainPanel);
+        App.mainframe.setVisible(true);
+        
+        return null;
+    }
+
+
 }
