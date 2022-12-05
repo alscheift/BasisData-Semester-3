@@ -8,7 +8,7 @@ public class App  {
     public static JLabel statusLabel;
     public static Connection conn;  
     public static String dbUrl = "jdbc:sqlserver://ASBJORNSEN\\SQLEXPRESS;databaseName=smp;integratedSecurity=true;encrypt=true;trustServerCertificate=true";   
-     
+
     /**
      * @return
      */
