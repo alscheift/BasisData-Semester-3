@@ -6,19 +6,19 @@ import javax.swing.*;
 
 public class PanelQuery extends JPanel{
     private JTextArea SingleQuery;
-    private JTextArea MultiLineQuery;
-    private JButton SingleExec;
-    private JButton MultiLineExec;
+    private JTextArea MultiQuery;
+    private JButton SingleQueryExec;
+    private JButton MultiQueryExec;
     private JButton BackButton;
 
     public PanelQuery(){
 
         //component
-        SingleQuery = new JTextArea("Single Line Query...");
-        MultiLineQuery = new JTextArea("Multi Line...");
+        SingleQuery = new JTextArea("Single Query...(1 ;)");
+        MultiQuery = new JTextArea("Multi Query...(n ;");
 
-        SingleExec = new JButton("EXECUTE");
-        MultiLineExec = new JButton("EXECUTE");
+        SingleQueryExec = new JButton("EXECUTE");
+        MultiQueryExec = new JButton("EXECUTE");
         BackButton = new JButton("BACK");
 
         //layout
@@ -28,27 +28,27 @@ public class PanelQuery extends JPanel{
 
         // add component
         add (SingleQuery);
-        add (MultiLineQuery);
-        add (SingleExec);
-        add (MultiLineExec);
+        add (MultiQuery);
+        add (SingleQueryExec);
+        add (MultiQueryExec);
         add (BackButton);
 
         // set component bound 
         SingleQuery.setBounds (10, 10, 510, 85);
-        MultiLineQuery.setBounds (10, 105, 510, 325);
+        MultiQuery.setBounds (10, 105, 510, 325);
         
-        SingleExec.setBounds (530, 15, 100, 25);
-        MultiLineExec.setBounds (530, 105, 100, 25);
+        SingleQueryExec.setBounds (530, 15, 100, 25);
+        MultiQueryExec.setBounds (530, 105, 100, 25);
         BackButton.setBounds (10, 440, 100, 25);
         
         // ButtonPress
-        SingleExec.addActionListener(e -> executeSingleQuery());
-        MultiLineExec.addActionListener(e -> executeMultiQuery());
+        SingleQueryExec.addActionListener(e -> executeSingleQuery());
+        MultiQueryExec.addActionListener(e -> executeMultiQuery());
         BackButton.addActionListener(e -> goBackMainPanel());
     }
 
     private Object executeMultiQuery() {
-        String query = this.MultiLineQuery.getText();
+        String query = this.MultiQuery.getText();
         String[] querysplit = query.split(";");
 
         Vector<String> queryvec = new Vector<String>();
