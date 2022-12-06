@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.sql.*;
 import javax.swing.*;
+import javax.swing.text.View;
 
 public class App  {
     public static JFrame mainframe;
@@ -8,6 +9,7 @@ public class App  {
     public static JPanel QueryPanel;
     public static JLabel statusLabel;
     public static JButton btnQueryPanel;
+    public static ViewComboBox viewComboBox;
 
     public static Connection conn;  
     public static String dbUrl = "jdbc:sqlserver://ASBJORNSEN\\SQLEXPRESS;databaseName=smp;integratedSecurity=true;encrypt=true;trustServerCertificate=true";   
@@ -53,6 +55,7 @@ public class App  {
         mainPanel.add(statusLabel);
         mainPanel.add(btnQueryPanel);
 
+        viewComboBox = new ViewComboBox(mainPanel);
 
         mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainframe.add(mainPanel);
