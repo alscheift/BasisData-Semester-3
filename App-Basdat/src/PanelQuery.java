@@ -9,8 +9,8 @@ public class PanelQuery extends JPanel{
     public PanelQuery(){
 
         //component
-        SingleQuery = new JTextArea("Single Query...(1 ;)");
-        MultiQuery = new JTextArea("Multi Query...(n ;");
+        SingleQuery = new JTextArea("Mengeksekusi hanya 1 query saja.");
+        MultiQuery = new JTextArea("Mengeksekusi Query lebih dari 1. ");
 
         JButton singleQueryExec = new JButton("EXECUTE");
         JButton multiQueryExec = new JButton("EXECUTE");
