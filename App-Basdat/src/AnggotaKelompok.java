@@ -6,11 +6,11 @@ public class AnggotaKelompok {
     private JLabel labelAnggota2;
     private JLabel labelAnggota3;
     private String[] StringAnggota = {
-        "Alfiki Diastama Afan Firdaus (M0521009)",
         "Afif Nur Fauzi (M0521007)",
+        "Alfiki Diastama Afan Firdaus (M0521009)",
         "Hafidh Muhammad Akbar (M0521026)"
     };
-
+    
     public AnggotaKelompok(JPanel mainPanel) {
         
 

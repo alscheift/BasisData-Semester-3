@@ -48,7 +48,7 @@ public class App  {
         
 
         statusLabel = new JLabel();
-        statusLabel.setBounds(0,0,720,25);
+        statusLabel.setBounds(10,0,720,25);
 
         mainPanel = new JPanel();
         mainPanel.setPreferredSize(new Dimension(720,480));

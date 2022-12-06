@@ -5,7 +5,7 @@ import javax.swing.*;
 public class PanelQuery extends JPanel{
     private final JTextArea SingleQuery;
     private final JTextArea MultiQuery;
-
+    
     public PanelQuery(){
 
         //component
@@ -15,6 +15,7 @@ public class PanelQuery extends JPanel{
         JButton singleQueryExec = new JButton("EXECUTE");
         JButton multiQueryExec = new JButton("EXECUTE");
         JButton backButton = new JButton("BACK");
+        JButton showAllTable = new JButton("ALL TABLE NAME");
 
         backButton.setBackground(Color.GRAY);
         backButton.setForeground(Color.WHITE);
@@ -22,7 +23,9 @@ public class PanelQuery extends JPanel{
         singleQueryExec.setForeground(Color.WHITE);
         multiQueryExec.setBackground(Color.GRAY);
         multiQueryExec.setForeground(Color.WHITE);
-        
+        showAllTable.setBackground(Color.GRAY);
+        showAllTable.setForeground(Color.WHITE);
+
         //layout
         setPreferredSize (new Dimension (720, 480));
         setLayout (null);
@@ -34,6 +37,7 @@ public class PanelQuery extends JPanel{
         add (singleQueryExec);
         add (multiQueryExec);
         add (backButton);
+        add (showAllTable);
 
         // set component bound 
         SingleQuery.setBounds (10, 10, 510, 85);
@@ -42,12 +46,19 @@ public class PanelQuery extends JPanel{
         singleQueryExec.setBounds (530, 15, 100, 25);
         multiQueryExec.setBounds (530, 105, 100, 25);
         backButton.setBounds (10, 440, 100, 25);
+        showAllTable.setBounds(530, 440, 180, 25);
         
         
         // ButtonPress
         singleQueryExec.addActionListener(e -> executeSingleQuery());
         multiQueryExec.addActionListener(e -> executeMultiQuery());
         backButton.addActionListener(e -> goBackMainPanel());
+        showAllTable.addActionListener(e->executeViewTableName());
+    }
+
+    private Object executeViewTableName() {
+        LoadData.EXEC("SELECT Name FROM SYSOBJECTS WHERE xtype = 'U'");
+        return null;
     }
 
     private void executeMultiQuery() {
