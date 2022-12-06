@@ -10,6 +10,7 @@ public class App  {
     public static JButton btnQueryPanel;
     public static ViewComboBox viewComboBox;
     public static LihatRaporSiswa procedureRaporsiswa;
+    public static AnggotaKelompok Kelompok1;
 
     public static Connection conn;  
     public static String dbUrl = "jdbc:sqlserver://ASBJORNSEN\\SQLEXPRESS;databaseName=smp;integratedSecurity=true;encrypt=true;trustServerCertificate=true";   
@@ -36,7 +37,7 @@ public class App  {
         QueryPanel = new PanelQuery();
 
         btnQueryPanel = new JButton("Query");
-        btnQueryPanel.setBounds(10,50,100,50);
+        btnQueryPanel.setBounds(500,50,140,80);
         btnQueryPanel.addActionListener(e-> gotoQueryPanel());
         
 
@@ -53,6 +54,7 @@ public class App  {
 
         viewComboBox = new ViewComboBox(mainPanel);
         procedureRaporsiswa = new LihatRaporSiswa(mainPanel);
+        Kelompok1 = new AnggotaKelompok(mainPanel);
 
         mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainframe.add(mainPanel);

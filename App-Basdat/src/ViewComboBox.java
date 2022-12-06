@@ -4,8 +4,10 @@ import java.util.Arrays;
 public class ViewComboBox {
     private JComboBox<String> ViewComboBox;
     private JButton View;
+    private JLabel labelTampilanView;
     private static String[] ViewComboBoxItems = {"GURU_MAPEL", "SISWA_PERKELAS", "GURU_WALIKELAS", "SISWA_NONAKADEMIK", "SISWA_PERLOMBAAN", "SISWA_LULUS_NILAI", "DATA_SISWA_KELUAR", "SISWA_PRESENSI", "SISWA_TOP_ANGKATAN2020", "SISWA_TOP_ANGKATAN2021", "SISWA_TOP_ANGKATAN2022"};
-    private static String[] comboBoxName = {"1. Menampilkan data guru dan nama mata pelajaran yang diampu",
+    private static String[] comboBoxName = {
+                                "1. Menampilkan data guru dan nama mata pelajaran yang diampu",
                                 "2. Menampilkan data siswa perkelas",
                                 "3. Menampilkan nama guru yang menjadi wali kelas",
                                 "4. Menampilkan nama siswa yang mengikuti ekstrakurikuler dan organisasi",
@@ -28,15 +30,20 @@ public class ViewComboBox {
         //construct components
         ViewComboBox = new JComboBox<String> (comboBoxName);
         View = new JButton ("Lihat");
+        labelTampilanView = new JLabel("Tampilkan View");
 
-        int x_offset = 150;
-        int y_offset = 70;
+        int x_offset = 0;
+        int y_offset = 300;
         //set component bounds (only needed by Absolute Positioning)
-        ViewComboBox.setBounds (x_offset+0, y_offset, 400, 30);
-        View.setBounds (x_offset+410, y_offset, 100, 25);
+        labelTampilanView.setBounds(x_offset+20,y_offset, 200,20);
+        ViewComboBox.setBounds (x_offset+20, 30+y_offset, 460, 30);
+        View.setBounds (x_offset+490, 30+y_offset, 100, 25);
+        
 
         thisPanel.add(ViewComboBox);
         thisPanel.add(View);
+        thisPanel.add(labelTampilanView);
+
 
         View.addActionListener(e -> execSelectedView());
     }

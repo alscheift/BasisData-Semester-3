@@ -24,8 +24,8 @@ public class LihatRaporSiswa {
         mainPanel.add(labelSemester);
         mainPanel.add(buttonLihatRapor);
 
-        int x_offset = 200;
-        int y_offset = 280;
+        int x_offset = 0;
+        int y_offset = 380;
         // set component bounds (only needed by Absolute Positioning)
         fieldNIS.setBounds(x_offset+20, y_offset+50, 100, 25);
         lihatNilaiSiswa.setBounds(x_offset+20, y_offset+0, 150, 25);
