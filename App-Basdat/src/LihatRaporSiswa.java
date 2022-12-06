@@ -2,44 +2,44 @@ import javax.swing.*;
 
 public class LihatRaporSiswa {
     private JLabel lihatNilaiSiswa;
-    private JTextField jcomp1;
-    private JTextField jcomp3;
-    private JLabel nis;
-    private JLabel sem;
-    private JButton bLihat;
+    private JTextField fieldNIS;
+    private JTextField fieldSemester;
+    private JLabel labelNIS;
+    private JLabel labelSemester;
+    private JButton buttonLihatRapor;
 
     public LihatRaporSiswa(JPanel mainPanel) {
-        jcomp1 = new JTextField(5);
+        fieldNIS = new JTextField(5);
         lihatNilaiSiswa = new JLabel("Lihat Rapor Siswa");
-        jcomp3 = new JTextField(5);
-        nis = new JLabel("NIS");
-        sem = new JLabel("Semester");
-        bLihat = new JButton("Lihat");
+        fieldSemester = new JTextField(5);
+        labelNIS = new JLabel("NIS");
+        labelSemester = new JLabel("Semester");
+        buttonLihatRapor = new JButton("Lihat");
 
         // add components
-        mainPanel.add(jcomp1);
+        mainPanel.add(fieldNIS);
         mainPanel.add(lihatNilaiSiswa);
-        mainPanel.add(jcomp3);
-        mainPanel.add(nis);
-        mainPanel.add(sem);
-        mainPanel.add(bLihat);
+        mainPanel.add(fieldSemester);
+        mainPanel.add(labelNIS);
+        mainPanel.add(labelSemester);
+        mainPanel.add(buttonLihatRapor);
 
-        int x_offset = 0;
-        int y_offset = 0;
+        int x_offset = 200;
+        int y_offset = 280;
         // set component bounds (only needed by Absolute Positioning)
-        jcomp1.setBounds(x_offset+220, y_offset+330, 100, 25);
-        lihatNilaiSiswa.setBounds(x_offset+220, y_offset+280, 100, 25);
-        jcomp3.setBounds(x_offset+330, y_offset+330, 100, 25);
-        nis.setBounds(x_offset+220, y_offset+305, 100, 25);
-        sem.setBounds(x_offset+330, y_offset+305, 100, 25);
-        bLihat.setBounds(x_offset+445, y_offset+330, 100, 25);
+        fieldNIS.setBounds(x_offset+20, y_offset+50, 100, 25);
+        lihatNilaiSiswa.setBounds(x_offset+20, y_offset+0, 150, 25);
+        fieldSemester.setBounds(x_offset+130, y_offset+50, 100, 25);
+        labelNIS.setBounds(x_offset+20, y_offset+25, 100, 25);
+        labelSemester.setBounds(x_offset+130, y_offset+25, 100, 25);
+        buttonLihatRapor.setBounds(x_offset+245, y_offset+50, 100, 25);
 
-        bLihat.addActionListener(e-> LihatNilainyeaa());
+        buttonLihatRapor.addActionListener(e-> LihatNilainyeaa());
 
     }
 
     private Object LihatNilainyeaa() {
-        LoadData.EXEC("EXEC RAPOR_SISWA @NisSiswa = "+ jcomp1.getText()+", @SemesterSiswa = "+jcomp3.getText()+";");
+        LoadData.EXEC("EXEC RAPOR_SISWA @NisSiswa = "+ fieldNIS.getText()+", @SemesterSiswa = "+fieldSemester.getText()+";");
         return null;
     }
 
