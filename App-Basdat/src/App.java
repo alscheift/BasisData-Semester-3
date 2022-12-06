@@ -8,6 +8,7 @@ public class App  {
     public static JPanel QueryPanel;
     public static JLabel statusLabel;
     public static JButton btnQueryPanel;
+    public static JLabel masukkanQueryLabel;
     public static ViewComboBox viewComboBox;
     public static LihatRaporSiswa procedureRaporsiswa;
     public static AnggotaKelompok Kelompok1;
@@ -37,8 +38,11 @@ public class App  {
         QueryPanel = new PanelQuery();
 
         btnQueryPanel = new JButton("Query");
-        btnQueryPanel.setBounds(500,50,140,80);
+        btnQueryPanel.setBounds(300,70,200,80);
         btnQueryPanel.addActionListener(e-> gotoQueryPanel());
+
+        masukkanQueryLabel = new JLabel("Masukkan Query(SELECT, INSERT, UPDATE ... DLL)");
+        masukkanQueryLabel.setBounds(300,50,400,25);
         
 
         statusLabel = new JLabel();
@@ -50,7 +54,9 @@ public class App  {
     
 
         mainPanel.add(statusLabel);
+        mainPanel.add(masukkanQueryLabel);
         mainPanel.add(btnQueryPanel);
+        mainPanel.add(masukkanQueryLabel);
 
         viewComboBox = new ViewComboBox(mainPanel);
         procedureRaporsiswa = new LihatRaporSiswa(mainPanel);
