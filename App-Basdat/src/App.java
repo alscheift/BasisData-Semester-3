@@ -48,6 +48,7 @@ public class App  {
         mainPanel = new JPanel();
         mainPanel.setPreferredSize(new Dimension(720,480));
         mainPanel.setLayout(null);
+    
 
         mainPanel.add(statusLabel);
         mainPanel.add(btnQueryPanel);
@@ -82,3 +83,4 @@ public class App  {
     
 }
 
+        
