@@ -2,54 +2,47 @@
 //Home Page http://guigenie.cjb.net - Check often for new versions!
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.event.*;
 
 public class JPanel2 extends JPanel {
-    private JButton Btn_ExecSQL;
-    private JTextArea jcomp2;
-    private JButton Btn_BackToMain;
+    private final JTextArea jcomp2;
 
     public JPanel2() {
         //construct components
-        Btn_ExecSQL = new JButton ("Execute SQL");
+        JButton btn_ExecSQL = new JButton("Execute SQL");
         jcomp2 = new JTextArea (5, 5);
-        Btn_BackToMain = new JButton ("Back");
+        JButton btn_BackToMain = new JButton("Back");
 
         //adjust size and set layout
         setPreferredSize (new Dimension (1080, 720));
         setLayout (null);
 
         //add components
-        add (Btn_ExecSQL);
+        add (btn_ExecSQL);
         add (jcomp2);
-        add (Btn_BackToMain);
+        add (btn_BackToMain);
 
         //set component bounds (only needed by Absolute Positioning)
-        Btn_ExecSQL.setBounds (780, 520, 150, 25);
+        btn_ExecSQL.setBounds (780, 520, 150, 25);
         jcomp2.setBounds (5, 5, 930, 505);
-        Btn_BackToMain.setBounds (5, 525, 100, 25);
+        btn_BackToMain.setBounds (5, 525, 100, 25);
 
-        Btn_ExecSQL.addActionListener(e -> ExecuteSQL());
-        Btn_BackToMain.addActionListener(e -> BackToMain());
+        btn_ExecSQL.addActionListener(e -> ExecuteSQL());
+        btn_BackToMain.addActionListener(e -> BackToMain());
     }
 
 
-    private Object BackToMain() {
+    private void BackToMain() {
         JFrame bframe = GuiGenie.frame;
         bframe.getContentPane().removeAll();
         bframe.getContentPane().add(new GuiGenie());
         bframe.setVisible (true);
-        return null;
     }
 
-    private Object ExecuteSQL() {
+    private void ExecuteSQL() {
         String query = jcomp2.getText();
         JPanel2_Exec.EXEC(query);
-        return null;
     }
-
 
     public static void main (String[] args) {
         JFrame frame = new JFrame ("MyPanel");
