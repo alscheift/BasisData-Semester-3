@@ -6,16 +6,14 @@ import javax.swing.*;
 
 
 public class JPanel1 extends JPanel {
-    private JList<String> jcomp1;
-    private JButton jcomp2;
 
     public JPanel1() {
         //construct preComponents
-        String jcomp1Items[] = {"Test1", "AAA", "BBBB"};
+        String[] jcomp1Items = {"Test1", "AAA", "BBBB"};
 
         //construct components
-        jcomp1 = new JList<String> (jcomp1Items);
-        jcomp2 = new JButton ("Back");
+        JList<String> jcomp1 = new JList<>(jcomp1Items);
+        JButton jcomp2 = new JButton("Back");
 
         //set components properties
         jcomp1.setToolTipText ("Hmm");
@@ -36,12 +34,11 @@ public class JPanel1 extends JPanel {
     }
 
 
-    private Object selectionButtonPressed() {
+    private void selectionButtonPressed() {
         JFrame bframe = GuiGenie.frame;
         bframe.getContentPane().removeAll();
         bframe.getContentPane().add(new GuiGenie());
         bframe.setVisible (true);
-        return null;
     }
 
 

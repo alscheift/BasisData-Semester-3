@@ -6,16 +6,12 @@ import javax.swing.*;
  
 public class GuiGenie extends JPanel {
     public static JFrame frame = new JFrame ("MyPanel");
-    
 
-    private JButton jcomp1;
-    private JButton jcomp2;
-    
 
     public GuiGenie() {
         //construct components
-        jcomp1 = new JButton ("JPanel1");
-        jcomp2 = new JButton ("JPanel2");
+        JButton jcomp1 = new JButton("JPanel1");
+        JButton jcomp2 = new JButton("JPanel2");
 
         //adjust size and set layout
         setPreferredSize (new Dimension (1080, 720));
@@ -34,20 +30,18 @@ public class GuiGenie extends JPanel {
     }
 
 
-    private Object selectionButtonPressed1() {
+    private void selectionButtonPressed1() {
         System.out.println("Switch to 1");
         
         frame.getContentPane().removeAll();
         frame.getContentPane().add(new JPanel1());
         frame.setVisible (true);
-        return null;
     }
-    private Object selectionButtonPressed2() {
+    private void selectionButtonPressed2() {
         System.out.println("Switch to 2");
         frame.getContentPane().removeAll();
         frame.getContentPane().add(new JPanel2());
         frame.setVisible (true);
-        return null;
     }
 
 
