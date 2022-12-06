@@ -40,12 +40,7 @@ public class App extends JPanel {
 
    public static void main(String[] args) {
       // Schedule a job for the event-dispatching thread to create and show this application's GUI.
-      SwingUtilities.invokeLater(new Runnable() {
-         @Override
-         public void run() {
-            createAndShowGUI();
-         }
-      });
+      SwingUtilities.invokeLater(App::createAndShowGUI);
       // ......
    }
 }

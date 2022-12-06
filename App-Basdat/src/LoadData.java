@@ -6,13 +6,12 @@ import java.util.Vector;
 
 public class LoadData extends JFrame {
 
-    private final JTable table;
     private final DefaultTableModel tableModel = new DefaultTableModel();
 
     public LoadData(String querytoexec) throws HeadlessException {
         setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 
-        table = new JTable(tableModel);
+        JTable table = new JTable(tableModel);
         add(new JScrollPane(table), BorderLayout.CENTER);
 
         new SwingWorker<Void, Void>() {
@@ -28,12 +27,7 @@ public class LoadData extends JFrame {
     }
 
     public static void EXEC(String querytoexec) {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new LoadData(querytoexec);
-            }
-        });
+        EventQueue.invokeLater(() -> new LoadData(querytoexec));
     }
 
     private void SQLTable(String querytoexec) {
@@ -44,7 +38,7 @@ public class LoadData extends JFrame {
             // setiap saat
             stmt = App.conn.createStatement();
 
-            Boolean isReturning = stmt.execute(querytoexec);
+            boolean isReturning = stmt.execute(querytoexec);
             ResultSet rs = stmt.getResultSet();
             System.out.println(querytoexec);
             ResultSetMetaData metaData = rs.getMetaData();
@@ -54,16 +48,16 @@ public class LoadData extends JFrame {
                 // Nama kolomnya
 
                 setVisible(true);
-                Vector<String> columnNames = new Vector<String>();
+                Vector<String> columnNames = new Vector<>();
                 int columnCount = metaData.getColumnCount();
                 for (int i = 1; i <= columnCount; i++) {
                     columnNames.add(metaData.getColumnName(i));
                 }
 
                 // Masukkan data
-                Vector<Vector<Object>> data = new Vector<Vector<Object>>();
+                Vector<Vector<Object>> data = new Vector<>();
                 while (rs.next()) {
-                    Vector<Object> vector = new Vector<Object>();
+                    Vector<Object> vector = new Vector<>();
                     for (int i = 1; i <= columnCount; i++) {
                         vector.add(rs.getObject(i));
                     }

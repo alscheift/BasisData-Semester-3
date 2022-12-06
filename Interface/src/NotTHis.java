@@ -31,14 +31,13 @@ public class NotTHis {
             stat.executeQuery("SELECT * FROM MAPEL;");
 
             ResultSet rs = stat.getResultSet();
-            int count = 1;
-            for(;rs.next();count++){
+            while (rs.next()) {
                 String KdMapel = rs.getString("IdMapel");
                 String NamaMapel = rs.getString("NamaMapel");
                 System.out.printf("%s %s\n",KdMapel,NamaMapel);
 
             }
-              
+
         } catch (SQLException e) {  
             System.out.println(e.getMessage());  
         } finally {  

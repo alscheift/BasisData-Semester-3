@@ -14,9 +14,6 @@ public class App  {
     public static Connection conn;  
     public static String dbUrl = "jdbc:sqlserver://ASBJORNSEN\\SQLEXPRESS;databaseName=smp;integratedSecurity=true;encrypt=true;trustServerCertificate=true";   
 
-    /**
-     * @return
-     */
     public static boolean connectDb(){
         conn = null;
         try {  
@@ -26,8 +23,7 @@ public class App  {
         } catch (SQLException e) {  
             System.out.println(e.getMessage());  
         }
-        if(conn==null) return false;
-        return true;
+        return conn != null;
     }
 
     
@@ -75,13 +71,12 @@ public class App  {
     }
 
 
-    private static Object gotoQueryPanel() {
+    private static void gotoQueryPanel() {
         mainframe.getContentPane().removeAll();
         App.mainframe.repaint();
         mainframe.add(QueryPanel);
         mainframe.pack();
         mainframe.setVisible(true);
-        return null;
     }
     
 }
