@@ -1,5 +1,4 @@
-import javax.swing.JButton;
-import javax.swing.JComboBox;
+import javax.swing.*;
 
 public class ViewComboBox {
     private JComboBox ViewComboBox;

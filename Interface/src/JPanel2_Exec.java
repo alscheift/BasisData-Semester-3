@@ -56,10 +56,10 @@ public class JPanel2_Exec extends JFrame {
     }
 
     private void loadData(String querytoexec) {
-        //LOG.info("START loadData method");
+        // LOG.info("START loadData method");
+        // button.setEnabled(false);
 
-       // button.setEnabled(false);
-        String url = "jdbc:sqlserver://ASBJORNSEN\\SQLEXPRESS;databaseName=smp;integratedSecurity=true;encrypt=true;trustServerCertificate=true";  
+        String url = "jdbc:sqlserver://ASBJORNSEN\\SQLEXPRESS;databaseName=smp;integratedSecurity=true;encrypt=true;trustServerCertificate=true";
         try (Connection conn = DriverManager.getConnection(url);
                 Statement stmt = conn.createStatement()) {
 
