@@ -29,9 +29,11 @@ public class ViewComboBox {
         ViewComboBox = new JComboBox<String> (comboBoxName);
         View = new JButton ("Lihat");
 
+        int x_offset = 150;
+        int y_offset = 70;
         //set component bounds (only needed by Absolute Positioning)
-        ViewComboBox.setBounds (150, 70, 350, 30);
-        View.setBounds (510, 70, 100, 25);
+        ViewComboBox.setBounds (x_offset+0, y_offset, 400, 30);
+        View.setBounds (x_offset+410, y_offset, 100, 25);
 
         thisPanel.add(ViewComboBox);
         thisPanel.add(View);
