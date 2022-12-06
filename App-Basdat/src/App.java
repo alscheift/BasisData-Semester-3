@@ -10,8 +10,11 @@ public class App  {
     public static JButton btnQueryPanel;
 
     public static Connection conn;  
-    public static String dbUrl = "jdbc:sqlserver://LAPTOP-AFAN\\SQLEXPRESS;databaseName=smp;integratedSecurity=true;encrypt=true;trustServerCertificate=true";
+    public static String dbUrl = "jdbc:sqlserver://ASBJORNSEN\\SQLEXPRESS;databaseName=smp;integratedSecurity=true;encrypt=true;trustServerCertificate=true";   
 
+    /**
+     * @return
+     */
     public static boolean connectDb(){
         conn = null;
         try {  
@@ -21,9 +24,11 @@ public class App  {
         } catch (SQLException e) {  
             System.out.println(e.getMessage());  
         }
-        return conn != null;
+        if(conn==null) return false;
+        return true;
     }
 
+    
     public static void setStatus(String txt){
         statusLabel.setText("Status : "+txt);
     }
@@ -36,12 +41,14 @@ public class App  {
         btnQueryPanel.setBounds(10,50,100,50);
         btnQueryPanel.addActionListener(e-> gotoQueryPanel());
         
+
         statusLabel = new JLabel();
         statusLabel.setBounds(0,0,720,25);
 
         mainPanel = new JPanel();
         mainPanel.setPreferredSize(new Dimension(720,480));
         mainPanel.setLayout(null);
+    
 
         mainPanel.add(statusLabel);
         mainPanel.add(btnQueryPanel);
@@ -58,17 +65,22 @@ public class App  {
             setStatus("SQL Server Connection Success...");
 
             
-        } else{
+        }else{
             setStatus("SQL Server Connection Failed...");
         }
         
     }
 
-    private static void gotoQueryPanel() {
+
+    private static Object gotoQueryPanel() {
         mainframe.getContentPane().removeAll();
         App.mainframe.repaint();
         mainframe.add(QueryPanel);
         mainframe.pack();
         mainframe.setVisible(true);
+        return null;
     }
+    
 }
+
+        
