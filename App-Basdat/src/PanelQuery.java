@@ -16,6 +16,13 @@ public class PanelQuery extends JPanel{
         JButton multiQueryExec = new JButton("EXECUTE");
         JButton backButton = new JButton("BACK");
 
+        backButton.setBackground(Color.GRAY);
+        backButton.setForeground(Color.WHITE);
+        singleQueryExec.setBackground(Color.GRAY);
+        singleQueryExec.setForeground(Color.WHITE);
+        multiQueryExec.setBackground(Color.GRAY);
+        multiQueryExec.setForeground(Color.WHITE);
+        
         //layout
         setPreferredSize (new Dimension (720, 480));
         setLayout (null);
@@ -35,6 +42,7 @@ public class PanelQuery extends JPanel{
         singleQueryExec.setBounds (530, 15, 100, 25);
         multiQueryExec.setBounds (530, 105, 100, 25);
         backButton.setBounds (10, 440, 100, 25);
+        
         
         // ButtonPress
         singleQueryExec.addActionListener(e -> executeSingleQuery());

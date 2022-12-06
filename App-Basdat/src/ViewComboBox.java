@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.util.Arrays;
 
 public class ViewComboBox {
@@ -31,6 +32,8 @@ public class ViewComboBox {
         ViewComboBox = new JComboBox<String> (comboBoxName);
         View = new JButton ("Lihat");
         labelTampilanView = new JLabel("Tampilkan View");
+        View.setBackground(Color.GRAY);
+        View.setForeground(Color.WHITE);
 
         int x_offset = 0;
         int y_offset = 300;

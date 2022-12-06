@@ -40,6 +40,8 @@ public class App  {
         btnQueryPanel = new JButton("Query");
         btnQueryPanel.setBounds(300,70,200,80);
         btnQueryPanel.addActionListener(e-> gotoQueryPanel());
+        //btnQueryPanel.setBackground(Color.LIGHT_GRAY);
+       // btnQueryPanel.setForeground(Color.BLACK);
 
         masukkanQueryLabel = new JLabel("Masukkan Query(SELECT, INSERT, UPDATE ... DLL)");
         masukkanQueryLabel.setBounds(300,50,400,25);

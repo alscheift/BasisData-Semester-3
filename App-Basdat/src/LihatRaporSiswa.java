@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.Color;
 
 public class LihatRaporSiswa {
     private JLabel lihatNilaiSiswa;
@@ -15,6 +16,9 @@ public class LihatRaporSiswa {
         labelNIS = new JLabel("NIS");
         labelSemester = new JLabel("Semester");
         buttonLihatRapor = new JButton("Lihat");
+
+        buttonLihatRapor.setBackground(Color.GRAY);
+        buttonLihatRapor.setForeground(Color.WHITE);
 
         // add components
         mainPanel.add(fieldNIS);
